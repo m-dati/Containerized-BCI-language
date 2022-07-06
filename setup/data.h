@@ -22,7 +22,7 @@ BUILD="$RUNTIME build"  # or "buildah"
 
 # 2- Select Language:
 Language=python
-Version=3.9
+Version=3.10
 LangRuntime=python3
 
 # Language libbrary installer and build/run for compiled:

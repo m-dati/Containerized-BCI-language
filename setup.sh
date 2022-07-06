@@ -2,8 +2,19 @@
 # Container Pre-config# Data and container preparation in bash
 #set -x
 
+# common tools
+source setup/common.h 
+
+if [ $# -gt 0 ] 
+then
+    DATAFILE=$1
+else
+    DATAFILE=setup/data.h
+fi
+[ ! -f $DATAFILE ] && error $DATAFILE
+ 
 # A - include base data
-source setup/data.h
+source $DATAFILE
 
 # B,C - Build images and containers 
 source setup/build.sh

@@ -1,4 +1,4 @@
-# Project
+# Project rel.1.0
 
 Create a selector of BCI-language containers to pull and build the proper SUSE BCI image and compile and run files of the selected language in local shared volume to be used for code development.
 
@@ -34,7 +34,10 @@ parameters related to:
 
   (*) machine running the container
 
-The setup steps are:
+In future versions the parameters could be organized in JSON structures.
+
+
+**The setup _steps_ are**:
 
 # A) Data
 
@@ -50,15 +53,17 @@ as initial setting we use simple parameters, like:
 
 Language=python3, Version=3:10
 
-Note: in future versions parameters could be organized in JSON structures.
-
 ## 3) Registry
 
 set the registry source of the images: registry.suse.com/bci/*
 
 ## 4) Image Name
 
-Definition of image name and container name for easy execution reference
+Definition of image name _ImgxNam_ and container name _ConxNam_ for easy execution reference.
+
+At each _setup.sh_ rerun, based on the _REUSE\_EXISTING\_(IMAGE/CONTAINER)_ parameters, when =NO, an internal algorhytm is able to assign a different name to the new object, simply increasing a numeric subfix in the previous existing container or image name [i.e. python-bob -> python-bob.1 -> python-bob.2 ... ].
+
+But we can always assign any new name editing the name parameters in data.h file saved in a new data{N}.h file (see Rel.1.1)
 
 ## 5) Directories
 
@@ -127,3 +132,16 @@ Finally the running container $ConxNam is available for:
 
 # E) Source code editing 
 It is possible to edit source code on the local machines in the Loc_Share directory, and run it in the container ConxShare directory.
+
+# Release 1.1
+
+Added an input parameter for the **setup.sh** script, in order to have libraries of different data sets, so that multiple different containers can be started:
+
+Default will use setup/data.sh:
+```bash
+  ./setup.sh
+```
+but we can select a different _existing_ data file instead, i.e.:
+```bash
+  ./setup.sh "setup/data-2.h"
+``` 

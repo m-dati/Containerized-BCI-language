@@ -1,11 +1,6 @@
 #!/bin/bash
 # Container Pre-config# Data and container preparation in bash
 
-error() {
-    echo Error: $1
-    exit 1
-}
-
 # increment last digit of a string like x.1
 incrsubfix() {
 # $1 : input string, format "prexif{$separator}subfix"
